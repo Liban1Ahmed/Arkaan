@@ -6,20 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('site_activities', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->string('schedule')->nullable();
+            $table->string('time')->nullable();
+            $table->string('location')->nullable();
+            $table->string('category')->default('Weekly');
+            $table->text('poster')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('site_activities');
